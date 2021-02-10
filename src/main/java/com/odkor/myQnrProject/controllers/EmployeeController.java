@@ -4,6 +4,7 @@ import com.odkor.myQnrProject.models.Department;
 import com.odkor.myQnrProject.models.Employee;
 import com.odkor.myQnrProject.services.EmployeeService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import static java.util.Objects.isNull;
 
 @Slf4j
 @Controller
+@Profile("nonrest")
 public class EmployeeController {
 
     private final EmployeeService employeeService;

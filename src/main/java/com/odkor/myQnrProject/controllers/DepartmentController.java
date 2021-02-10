@@ -4,6 +4,7 @@ import com.odkor.myQnrProject.models.Department;
 import com.odkor.myQnrProject.repositories.DepartmentRepository;
 import com.odkor.myQnrProject.services.DepartmentService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import static java.util.Objects.isNull;
 
 @Slf4j
 @Controller
+@Profile("nonrest")
 public class DepartmentController {
 
     private final DepartmentService departmentService;
@@ -50,7 +52,7 @@ public class DepartmentController {
 
         List<Department> departments = departmentService.findAllByLocation(locationId);
         model.addAttribute("departments", departments);
-        if(!isNull(departments)) {
+        if(!departments.isEmpty()) {
             log.info("Attempt was successful displaying results.");
             model.addAttribute("location", departments.get(0).getLocation().getName());
             return "department/allDepartments";
