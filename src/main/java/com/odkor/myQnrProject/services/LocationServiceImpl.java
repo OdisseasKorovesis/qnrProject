@@ -2,10 +2,12 @@ package com.odkor.myQnrProject.services;
 
 import com.odkor.myQnrProject.models.Location;
 import com.odkor.myQnrProject.repositories.LocationRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class LocationServiceImpl implements LocationService {
 
     private final LocationRepository locationRepository;

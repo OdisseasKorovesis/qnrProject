@@ -3,10 +3,12 @@ package com.odkor.myQnrProject.services;
 import com.odkor.myQnrProject.models.Department;
 import com.odkor.myQnrProject.models.Location;
 import com.odkor.myQnrProject.repositories.DepartmentRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class DepartmentServiceImpl implements DepartmentService {
 
     private final DepartmentRepository departmentRepository;

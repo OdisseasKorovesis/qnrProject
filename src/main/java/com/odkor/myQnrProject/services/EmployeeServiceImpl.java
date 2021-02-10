@@ -2,10 +2,12 @@ package com.odkor.myQnrProject.services;
 
 import com.odkor.myQnrProject.models.Employee;
 import com.odkor.myQnrProject.repositories.EmployeeRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
