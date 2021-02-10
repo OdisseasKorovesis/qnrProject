@@ -2,6 +2,7 @@ package com.odkor.myQnrProject.models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "employees")
@@ -21,7 +22,8 @@ public class Employee extends BaseEntity {
     private Employee manager;
 
     @Column(name = "hire_date")
-    private LocalDate hireDate;
+    @Temporal(TemporalType.DATE)
+    private Date hireDate;
 
     @Column(name = "salary")
     private double salary;
