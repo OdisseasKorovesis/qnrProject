@@ -32,7 +32,7 @@ public class EmployeeController {
 
         List<Employee> employees = employeeService.findAll();
         if(!employees.isEmpty()) {
-            log.info("Attemp was successful, displaying results.");
+            log.info("Attempt was successful, displaying results.");
             model.addAttribute("employees", employees);
             return "employee/allEmployees";
         }
