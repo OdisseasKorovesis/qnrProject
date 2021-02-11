@@ -26,7 +26,7 @@ public class Employee extends BaseEntity {
     @Column(name = "job")
     private String job;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "manager_id")
     private Employee manager;
 

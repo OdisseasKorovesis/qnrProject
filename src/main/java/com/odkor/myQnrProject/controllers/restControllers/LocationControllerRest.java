@@ -1,5 +1,6 @@
 package com.odkor.myQnrProject.controllers.restControllers;
 
+import com.odkor.myQnrProject.Utils.Utils;
 import com.odkor.myQnrProject.models.Location;
 import com.odkor.myQnrProject.services.LocationService;
 import lombok.extern.slf4j.Slf4j;
@@ -26,15 +27,24 @@ public class LocationControllerRest {
     }
 
     @GetMapping(value = "/locations", produces = {MediaType.APPLICATION_XML_VALUE})
-    public ResponseEntity<List<Location>> showLocations(Model model) {
+    public ResponseEntity<List<Location>> showLocations() {
 
         log.info("Attempting to find all locations...");
-        List<Location> locations = locationService.findAll();
 
-        if(!locations.isEmpty()) {
-            log.info("Attempt was successful, displaying results.");
+        try {
+            List<Location> locations = locationService.findAll();
+
+            if(locations.isEmpty()) {
+                log.info("Attempt was successful, but returned empty results.");
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+            log.info("Attempt was successful, list of locations was returned.");
             return new ResponseEntity<>(locations, HttpStatus.OK);
+        }catch (Exception ex) {
+            String exceptionString = Utils.getExceptionStackTrace(ex);
+            log.info("Attempt was unsuccessful due to exception: " + exceptionString);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return null;
     }
 }

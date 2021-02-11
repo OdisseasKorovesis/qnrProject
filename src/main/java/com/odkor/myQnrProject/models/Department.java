@@ -23,6 +23,7 @@ public class Department extends BaseEntity {
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "department")
+    @JsonIgnore
     private Set<Employee> employees;
 
     @ManyToOne
