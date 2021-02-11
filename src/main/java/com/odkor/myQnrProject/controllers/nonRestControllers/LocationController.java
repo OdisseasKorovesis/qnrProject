@@ -1,4 +1,4 @@
-package com.odkor.myQnrProject.controllers;
+package com.odkor.myQnrProject.controllers.nonRestControllers;
 
 import com.odkor.myQnrProject.models.Location;
 import com.odkor.myQnrProject.services.LocationService;

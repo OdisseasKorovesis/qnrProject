@@ -1,4 +1,4 @@
-package com.odkor.myQnrProject.controllers;
+package com.odkor.myQnrProject.controllers.nonRestControllers;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
