@@ -60,7 +60,7 @@ To test the WebServices Client subsystem:
 
 * Navigate to myQnrProject\src\main\resources\application.properties and set the spring.profiles.active to "rest".
 * Run main method of project through MyQnrProjectApplication class
-* Open up any of your browsers to the page (localhost:8080/wsclientindex) and from there you can navigate to all the required information.
+* Open up any of your browsers to the page (localhost:8080/wsclientindex.html) and from there you can navigate to all the required information.
 
 ## Authors
 
