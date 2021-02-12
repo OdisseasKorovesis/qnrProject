@@ -68,5 +68,6 @@ ex. [Odisseas Korovesis-Danon](https://www.linkedin.com/in/odisseas-korovesis-da
 
 ## Not Implemented Yet
 
-* Fourth Subsystem (WS Client) has not been implemented)
+* Fourth Subsystem (WS Client) has only index page with sample data, not possible to navigate and select which 
+  info to view.
 * Extensive documentation within the source code (comments, javadoc) has not been provided.

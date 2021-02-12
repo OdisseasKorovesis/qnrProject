@@ -17,6 +17,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     var departments;
+    var tableName = ".departments_table_body";
     $.ajax({
         url: "/departments/",
         data: {
@@ -27,13 +28,32 @@ $(document).ready(function() {
         },
         success: function (data) {
             departments = data.getElementsByTagName("item");
-            generateDepartmentsTable(departments);
+            generateDepartmentsTable(departments, tableName);
+        }
+    });
+});
+
+$(document).ready(function() {
+    var departments;
+    var tableName = ".departmentsByLoc_table_body";
+    $.ajax({
+        url: "/departments/1",
+        data: {
+            format: 'xml'
+        },
+        error: function () {
+            alert("Could not find any departments!");
+        },
+        success: function (data) {
+            departments = data.getElementsByTagName("item");
+            generateDepartmentsTable(departments, tableName);
         }
     });
 });
 
 $(document).ready(function() {
     var employees;
+    var tableName = ".employee_table_body";
     $.ajax({
         url: "/employees/",
         data: {
@@ -44,7 +64,60 @@ $(document).ready(function() {
         },
         success: function (data) {
             employees = data.getElementsByTagName("item");
-            generateEmployeesTable(employees);
+            generateEmployeesTable(employees, tableName);
+        }
+    });
+});
+
+$(document).ready(function() {
+    var employees;
+    var tableName = ".employeesByDep_table_body";
+    $.ajax({
+        url: "/employees/1",
+        data: {
+            format: 'xml'
+        },
+        error: function () {
+            alert("Could not find any employees!");
+        },
+        success: function (data) {
+            employees = data.getElementsByTagName("item");
+            generateEmployeesTable(employees, tableName);
+        }
+    });
+});
+
+$(document).ready(function() {
+    var employees;
+    var tableName = ".employeesByName_table_body";
+    $.ajax({
+        url: "/employees/byName?employeeName=kor",
+        data: {
+            format: 'xml'
+        },
+        error: function () {
+            alert("Could not find any employees!");
+        },
+        success: function (data) {
+            employees = data.getElementsByTagName("item");
+            generateEmployeesTable(employees, tableName);
+        }
+    });
+});
+
+$(document).ready(function() {
+    var employee;
+    $.ajax({
+        url: "/employee/2",
+        data: {
+            format: 'xml'
+        },
+        error: function () {
+            alert("Could not find an employee!");
+        },
+        success: function (data) {
+            employee = data.getElementsByTagName('Employee')[0];
+            generateEmployeeTable(employee);
         }
     });
 });
@@ -62,8 +135,8 @@ function generateLocationsTable(locations) {
     }
 }
 
-function generateDepartmentsTable(departments) {
-    var tableBody = $('.department_table_body')
+function generateDepartmentsTable(departments, tableName) {
+    var tableBody = $(tableName)
     tableBody.empty();
     for(i = 0; i < departments.length; i++) {
         tableBody.append(
@@ -76,8 +149,10 @@ function generateDepartmentsTable(departments) {
     }
 }
 
-function generateEmployeesTable(employees) {
-    var tableBody = $('.employee_table_body')
+function generateEmployeesTable(employees, tableName) {
+    console.log(employees);
+    console.log(tableName);
+    var tableBody = $(tableName)
     tableBody.empty();
     for(i = 0; i < employees.length; i++) {
         tableBody.append(
@@ -89,4 +164,24 @@ function generateEmployeesTable(employees) {
             "</tr>"
         )
     }
+}
+
+function generateEmployeeTable(employee) {
+    console.log(employee);
+    var tableBody = $('.employeeInfo_table_body')
+    tableBody.empty();
+    tableBody.append(
+            "<tr>" +
+                "<th>" + employee.childNodes[0].innerHTML + "</th>" +
+                "<td>" + employee.childNodes[1].innerHTML + "</td>" +
+                "<td>" + employee.childNodes[2].innerHTML + "</td>" +
+                "<td>" + employee.childNodes[3].innerHTML + "</td>" +
+                "<td>" + employee.childNodes[4].childNodes[1].innerHTML + "</td>" +
+                "<td>" + employee.childNodes[5].innerHTML + "</td>" +
+                "<td>" + employee.childNodes[6].innerHTML + "</td>" +
+                "<td>" + employee.childNodes[7].innerHTML + "</td>" +
+                "<td>" + employee.childNodes[8].childNodes[1].innerHTML + "</td>" +
+            "</tr>"
+        )
+    
 }
