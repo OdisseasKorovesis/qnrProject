@@ -101,15 +101,15 @@ public class EmployeeControllerRest {
         log.info(String.format("Attempting to find employee with name %s...", employeeName));
 
         try {
-            List<Employee> employee = employeeService.findByName(employeeName);
+            List<Employee> employees = employeeService.findByName(employeeName);
 
-            if(isNull(employee)) {
+            if(employees.isEmpty()) {
                 log.info("Attempt was successful, but did not return a result.");
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
 
             log.info("Attempt was successful, employee was returned.");
-            return new ResponseEntity<>(employee, HttpStatus.OK);
+            return new ResponseEntity<>(employees, HttpStatus.OK);
         }catch (Exception ex) {
             String exceptionString = Utils.getExceptionStackTrace(ex);
             log.info("Attempt was unsuccessful due to exception: " + exceptionString);

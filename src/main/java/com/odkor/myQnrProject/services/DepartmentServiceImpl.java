@@ -25,12 +25,6 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Department findByLocation(Long locationId) {
-        Department department = departmentRepository.findByLocation(locationId);
-        return department;
-    }
-
-    @Override
     public Department findById(Long id) {
         return departmentRepository.findById(id).orElse(null);
     }
